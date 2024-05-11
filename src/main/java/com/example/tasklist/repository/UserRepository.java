@@ -2,12 +2,10 @@ package com.example.tasklist.repository;
 
 import com.example.tasklist.domain.user.Role;
 import com.example.tasklist.domain.user.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;
 
-@Mapper
 public interface UserRepository {
 
     Optional<User> findById(Long id);

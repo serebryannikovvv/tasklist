@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
- []
+
     @Override
     @Transactional
     public User update(User user) {
