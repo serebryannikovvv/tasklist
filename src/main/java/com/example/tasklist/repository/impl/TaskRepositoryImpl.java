@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
+@Repository
 @RequiredArgsConstructor
 public class TaskRepositoryImpl implements TaskRepository {
 
@@ -61,9 +61,8 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public Optional<Task> findById(Long id) {
-        try {
-            Connection connection = dataSourceConfig.getConnection();
-            PreparedStatement statement = connection.prepareStatement(FIND_BY_ID);
+        try(Connection connection = dataSourceConfig.getConnection();
+            PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
             statement.setLong(1, id);
             ResultSet rs = statement.executeQuery();
             try (rs) {
